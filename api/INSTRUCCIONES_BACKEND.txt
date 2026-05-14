@@ -1,0 +1,22 @@
+⚠️ INSTRUCCIONES PARA EL BACKEND ⚠️
+
+Hola desarrollador/a,
+
+En esta carpeta debes configurar tu servidor de datos. La idea es que utilices 'json-server' para simular una API REST de forma rápida.
+
+Pasos recomendados:
+1. Inicializa npm: 'npm init -y'
+2. Instala json-server: 'npm install json-server'
+3. Crea un archivo 'db.json' con una colección de "productos".
+4. Configura un script en el package.json para lanzar el servidor.
+
+Estructura sugerida para cada producto en db.json:
+{
+  "id": 1,
+  "nombre": "Ejemplo",
+  "precio": 99.99,
+  "stock": 10,
+  "descripcion": "Una breve descripción"
+}
+
+¡Manos a la obra!
