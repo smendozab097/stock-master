@@ -17,7 +17,7 @@
         {
             "id": 3,
             "nombre": "Mouse Gamer Attack Shark X11",
-            "precio": 123.134,
+            "precio": 123134,
             "stock": 15,
             "descripcion": "Eleva tu juego al próximo nivel con el Attack Shark X11, un mouse diseñado para ofrecer el máximo en precisión y rendimiento."
         },
@@ -31,7 +31,7 @@
         {
             "id": 5,
             "nombre": "Parlantes Xtrike Me SK-503",
-            "precio": 70.500,
+            "precio": 70500,
             "stock": 30,
             "descripcion": "Libera tu experiencia de juego con los parlantes Bluetooth Xtrike Me SK-503 y disfruta de un sonido envolvente y de alta calidad sin ataduras."
         }

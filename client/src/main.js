@@ -19,6 +19,16 @@ const stockBadgeColor = (stock) => {
     return 'px-4 py-1.5 bg-emerald-50 text-emerald-600 rounded-xl text-[10px] font-black uppercase tracking-tight border border-emerald-100';
 };
 
+const formatPrice = (price) => {
+    return new Intl.NumberFormat('es-CO', { 
+        style: 'currency', 
+        currency: 'COP',
+        currencyDisplay: 'code',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 2 
+    }).format(price);
+}
+
 const renderProducts = (listaDeProductos) => {
     try {
         const tbody = document.getElementById('inventory-list');
@@ -35,7 +45,7 @@ const renderProducts = (listaDeProductos) => {
                             <td class="px-8 py-6 text-center">
                                 <span class="${stockBadgeColor(producto.stock)}">${producto.stock}</span>
                             </td>
-                            <td class="px-8 py-6 text-center font-bold text-slate-900">$${producto.precio.toFixed(2)}</td>
+                            <td class="px-8 py-6 text-center font-bold text-slate-900">${formatPrice(producto.precio)}</td>
                             <td class="px-8 py-6 text-right">
                                 <div class="flex justify-end gap-3">
                                 <button class="w-10 h-10 flex items-center justify-center text-indigo-600 hover:bg-indigo-50 rounded-xl transition-all border border-transparent hover:border-indigo-100" title="Editar">
