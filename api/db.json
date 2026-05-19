@@ -4,30 +4,35 @@
             "id": 1,
             "nombre": "Monitor LG 27 Pulgadas Ips",
             "precio": 515277,
+            "stock": 10,
             "descripcion": "Este panel se destaca por sus colores más precisos y mejores ángulos de visión gracias a la tecnología IPS. Con resolución Full HD (1920 x 1080)."
         },
         {
             "id": 2,
             "nombre": "Teclado Mecánico RGB AULA WIN68",
             "precio": 163744,
+            "stock": 20,
             "descripcion": "El teclado AULA WIN68 HE ofrece una tasa de sondeo líder en la industria con un tiempo de respuesta 8 veces más rápido que el teclado mecánico tradicional"
         },
         {
             "id": 3,
             "nombre": "Mouse Gamer Attack Shark X11",
             "precio": 123.134,
+            "stock": 15,
             "descripcion": "Eleva tu juego al próximo nivel con el Attack Shark X11, un mouse diseñado para ofrecer el máximo en precisión y rendimiento."
         },
         {
             "id": 4,
             "nombre": "Headset Attack Shark L90 Tri-Modo",
             "precio": 102816,
+            "stock": 25,
             "descripcion": "Headset gaming con tecnología de sonido envolvente y micrófono incorporado."
         },
         {
             "id": 5,
             "nombre": "Parlantes Xtrike Me SK-503",
             "precio": 70.500,
+            "stock": 30,
             "descripcion": "Libera tu experiencia de juego con los parlantes Bluetooth Xtrike Me SK-503 y disfruta de un sonido envolvente y de alta calidad sin ataduras."
         }
     ]
