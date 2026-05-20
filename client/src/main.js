@@ -1,6 +1,7 @@
 import './styles/globals.css';
-import { getProducts, createProduct } from './services/product.service';
+import { getProducts, createProduct, deleteProduct } from './services/product.service';
 import { stockBadgeColor, formatPrice } from "./utils/formatters";
+import Toastify from 'toastify-js';
 
 // Este código se ejecuta cuando el HTML ya está cargado.
 document.addEventListener('DOMContentLoaded', async () => {
@@ -33,6 +34,49 @@ document.addEventListener('DOMContentLoaded', async () => {
         const productosActualizados = await getProducts();
         renderProducts(productosActualizados);
     });
+
+// ==========================================
+    // NUEVO: EL VIGILANTE DE LA TABLA (ELIMINAR)
+    // ==========================================
+    const tbody = document.getElementById('inventory-list');
+    
+    tbody.addEventListener('click', async (event) => {
+        // Buscamos si el click ocurrió en el botón que tiene el título "Eliminar" (o sus hijos como el SVG)
+        const deleteButton = event.target.closest('button[title="Eliminar"]');
+        
+        // Si no se hizo click en un botón de eliminar, ignoramos el evento
+        if (!deleteButton) return;
+
+        // Extraemos el ID que guardaste magníficamente en el atributo data-id="${producto.id}"
+        const productId = deleteButton.dataset.id;
+
+        // Una pequeña confirmación nativa para evitar desastres
+        const confirmar = confirm("¿Estás seguro de que deseas eliminar este producto?");
+        
+        if (confirmar) {
+            try {
+                // Ejecutamos la orden de eliminación en el backend
+                await deleteProduct(productId);
+
+                // Avisamos al usuario con un Toast verde de éxito
+                Toastify({
+                    text: "🗑️ Producto eliminado correctamente",
+                    duration: 3000,
+                    gravity: "top",
+                    position: "right",
+                    style: { background: "#10b981" } // Verde esmeralda
+                }).showToast();
+
+                // Volvemos a consultar la base de datos y refrescamos la tabla
+                const productosActualizados = await getProducts();
+                renderProducts(productosActualizados);
+
+            } catch (error) {
+                console.error("No se pudo eliminar el producto", error);
+            }
+        }
+    });
+
 });
 
 
@@ -74,3 +118,4 @@ const renderProducts = (listaDeProductos) => {
         throw error;
     }
 }
+

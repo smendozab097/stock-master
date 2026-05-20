@@ -1,4 +1,7 @@
 
+import Toastify from 'toastify-js';
+import "toastify-js/src/toastify.css"; // Importamos los estilos del toast
+
 const endpoint = 'http://localhost:3000';
 
 export const getProducts = async () => {
@@ -7,7 +10,17 @@ export const getProducts = async () => {
         const data = await response.json();
         return data;
     } catch (error) {
-        alert('Sistema fuera de servicio, intente nuevamente más tarde.');
+        Toastify({
+            text: "⚠️ Sistema fuera de servicio. Intente más tarde.",
+            duration: 4000, // Se va solo en 4 segundos
+            gravity: "top", // Aparece arriba
+            position: "right", // Al lado derecho
+            style: {
+                background: "#e11d48", // Color rojo de Tailwind (rose-600)
+                borderRadius: "12px",
+                fontWeight: "bold"
+            }
+        }).showToast();
         console.error('Error fetching products:', error);
         throw error;
     }
