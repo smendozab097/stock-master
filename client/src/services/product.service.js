@@ -1,5 +1,5 @@
 
-const endpoint = 'http://localhost:3001';
+const endpoint = 'http://localhost:3000';
 
 export const getProducts = async () => {
     try {
@@ -34,13 +34,11 @@ export const createProduct = async (producto) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(producto)
-
-            
         });
         const data = await response.json();
         return data;
     } catch (error) {
-        console.error('Error creating product:', error);
+        console.error('Error creando producto:', error);
         throw error;
     }
 }
