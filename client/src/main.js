@@ -35,14 +35,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         renderProducts(productosActualizados);
     });
 
-// ==========================================
+    // ==========================================
     // NUEVO: EL VIGILANTE DE LA TABLA (ELIMINAR)
     // ==========================================
     const tbody = document.getElementById('inventory-list');
     
     tbody.addEventListener('click', async (event) => {
-        // Buscamos si el click ocurrió en el botón que tiene el título "Eliminar" (o sus hijos como el SVG)
-        const deleteButton = event.target.closest('button[title="Eliminar"]');
+        // CORRECCIÓN: Buscamos por la clase específica 'js-delete-btn' en lugar del título
+        const deleteButton = event.target.closest('.js-delete-btn');
         
         // Si no se hizo click en un botón de eliminar, ignoramos el evento
         if (!deleteButton) return;
@@ -60,11 +60,14 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                 // Avisamos al usuario con un Toast verde de éxito
                 Toastify({
-                    text: "🗑️ Producto eliminado correctamente",
+                    text: "Producto eliminado correctamente",
                     duration: 3000,
                     gravity: "top",
                     position: "right",
-                    style: { background: "#10b981" } // Verde esmeralda
+                    style: { background: "#10b981", // Verde esmeralda
+                        borderRadius: "12px",
+                        fontWeight: "bold"
+                     } // Verde esmeralda
                 }).showToast();
 
                 // Volvemos a consultar la base de datos y refrescamos la tabla
@@ -104,8 +107,10 @@ const renderProducts = (listaDeProductos) => {
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                                     </svg>
                                 </button>
-                                <button data-id="${producto.id}" class="w-10 h-10 flex items-center justify-center text-rose-600 hover:bg-rose-50 rounded-xl transition-all border border-transparent hover:border-rose-100" title="Eliminar">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                
+                                <!-- CORRECCIÓN: Añadida clase 'js-delete-btn' al botón y 'pointer-events-none' al SVG -->
+                                <button data-id="${producto.id}" class="js-delete-btn w-10 h-10 flex items-center justify-center text-rose-600 hover:bg-rose-50 rounded-xl transition-all border border-transparent hover:border-rose-100" title="Eliminar">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                     </svg>
                                 </button>
@@ -118,4 +123,3 @@ const renderProducts = (listaDeProductos) => {
         throw error;
     }
 }
-

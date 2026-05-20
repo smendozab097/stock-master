@@ -55,20 +55,6 @@
       "descripcion": "Headset Gamer Logitech",
       "precio": 350000,
       "stock": 24
-    },
-    {
-      "id": "kdJawiUwgYM",
-      "nombre": "prueba doble",
-      "descripcion": "probando 123",
-      "precio": 123,
-      "stock": 852
-    },
-    {
-      "id": "Bot6Eu_eq4s",
-      "nombre": "prueba descripcion vacia",
-      "descripcion": "",
-      "precio": 123456,
-      "stock": 12
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
